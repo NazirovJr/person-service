@@ -18,6 +18,7 @@ public class MedicalCardDto {
     @NotBlank
     private String medStatus;
 
+    @NotBlank
     private LocalDate registryDt;
 
     private String comment;
