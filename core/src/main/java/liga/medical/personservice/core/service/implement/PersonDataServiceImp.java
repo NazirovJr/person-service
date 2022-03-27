@@ -4,6 +4,7 @@ import liga.medical.personservice.core.model.PersonDataEntity;
 import liga.medical.personservice.core.repository.PersonDataRepository;
 import liga.medical.personservice.core.service.interfaces.PersonDataService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,5 +49,17 @@ public class PersonDataServiceImp implements PersonDataService {
     public Boolean deleteById(Long id) {
         log.info("Received id = " + id);
         return personDataRepository.deleteById(id);
+    }
+
+    @Override
+    public PersonDataEntity loadUserByUsername(String s) {
+        return personDataRepository.findByEmail(s)
+                .orElseThrow(() -> new UsernameNotFoundException(s));
+    }
+
+    @Override
+    public boolean isExists(String email) {
+        return personDataRepository.findByEmail(email)
+                .isPresent();
     }
 }

@@ -16,6 +16,12 @@ public class PersonDataDto {
     private String lastName;
 
     @NotBlank
+    private String email;
+
+    @NotBlank
+    private String password;
+
+    @NotBlank
     private String firstName;
 
     @NotBlank

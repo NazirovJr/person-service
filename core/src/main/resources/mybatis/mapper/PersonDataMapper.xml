@@ -8,7 +8,7 @@
 
     <select id="findByIds" resultMap="personDataEntity">
         <bind name="" value=""/>
-        SELECT id, last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id
+        SELECT id, email, password, role, status, last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id
         FROM person_data
         <choose>
             <when test="personIds.isEmpty()">
@@ -23,6 +23,14 @@
             </otherwise>
         </choose>
     </select>
+    <select id="findByEmail" resultMap="personDataEntity">
+        SELECT pd.*, r.id AS role_id, r.value AS value
+        FROM person_data AS pd
+            INNER JOIN role_person AS rp ON pd.id = rp.person_data_id
+            INNER JOIN role AS r ON r.id = rp.role_id
+        WHERE pd.email=#{email};
+    </select>
+
 
     <insert id="insertAll" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
         INSERT INTO person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) VALUES

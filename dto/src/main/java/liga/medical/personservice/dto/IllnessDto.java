@@ -21,6 +21,7 @@ public class IllnessDto {
 
     private Character heaviness;
 
+    @NotBlank
     private LocalDateTime appearanceDttm;
 
     @NotBlank

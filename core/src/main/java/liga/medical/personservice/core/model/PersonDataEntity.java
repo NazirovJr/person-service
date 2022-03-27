@@ -8,6 +8,14 @@ import java.time.LocalDate;
 public class PersonDataEntity {
     private Long id;
 
+    private String email;
+
+    private String password;
+
+    private Role role;
+
+    private Status status;
+
     private String lastName;
 
     private String firstName;

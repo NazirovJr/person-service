@@ -1,0 +1,1 @@
+drop table if exists medical_card, address, contact, illness, person_data cascade ;

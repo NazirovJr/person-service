@@ -4,10 +4,11 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <include file="0.0.2/address-0.0.2.xml" relativeToChangelogFile="true"/>
-    <include file="0.0.2/contact-0.0.2.xml" relativeToChangelogFile="true"/>
-    <include file="0.0.2/illness-0.0.2.xml" relativeToChangelogFile="true"/>
-    <include file="0.0.2/medical-card-0.0.2.xml" relativeToChangelogFile="true"/>
-    <include file="0.0.2/person-data-0.0.2.xml" relativeToChangelogFile="true"/>
+    <changeSet id="2022-03-21 00:48:00" author="nazirov" context="main" labels="main">
+        <sqlFile path="start-0.0.1/sql/create_db_tables.sql" relativeToChangelogFile="true"/>
+        <rollback>
+            <sqlFile path="start-0.0.1/sql/rollback/create_db_tables_rollback.sql" relativeToChangelogFile="true"/>
+        </rollback>
+    </changeSet>
 
 </databaseChangeLog>
